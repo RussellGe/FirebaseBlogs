@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import routes from 'virtual:generated-pages';
 import App from './App.vue';
-import Vue2Editor from 'vue2-editor';
+import store from './store';
 import '@unocss/reset/tailwind.css';
 import './styles/main.css';
 import 'uno.css';
@@ -13,6 +13,7 @@ const router = createRouter({
   routes,
 });
 
-app.use(Vue2Editor);
+
 app.use(router);
+app.use(store)
 app.mount('#app');
