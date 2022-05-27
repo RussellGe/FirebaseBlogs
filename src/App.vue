@@ -1,7 +1,7 @@
 <template>
-  <main flex flex-col h-screen>
+  <main flex flex-col>
     <Header />
-    <router-view bg="gray-200 dark:gray-700" flex-1 />
+    <router-view bg="gray-200" />
     <Footer />
   </main>
 </template>

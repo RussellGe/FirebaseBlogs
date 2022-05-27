@@ -12,26 +12,76 @@ const handleClick = (text: string) => {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container-main">
     <div class="card-cantainer">
       <Card1
+        class="card-item"
         v-for="post in postStore.Posts"
         :key="post.id"
         :img-url="post.blogCoverPhoto"
         :title="post.blogTitle"
         :desc="post.blogDesc"
         :tags="post.tags"
+        :time='post.date.seconds'
+      />
+      <Card1
+        class="card-item"
+        v-for="post in postStore.Posts"
+        :key="post.id"
+        :img-url="post.blogCoverPhoto"
+        :title="post.blogTitle"
+        :desc="post.blogDesc"
+        :tags="post.tags"
+        :time='post.date.seconds'
+      />
+      <Card1
+        class="card-item"
+        v-for="post in postStore.Posts"
+        :key="post.id"
+        :img-url="post.blogCoverPhoto"
+        :title="post.blogTitle"
+        :desc="post.blogDesc"
+        :tags="post.tags"
+        :time='post.date.seconds'
+      />
+      <Card1
+        class="card-item"
+        v-for="post in postStore.Posts"
+        :key="post.id"
+        :img-url="post.blogCoverPhoto"
+        :title="post.blogTitle"
+        :desc="post.blogDesc"
+        :tags="post.tags"
+        :time='post.date.seconds'
+      />
+      <Card1
+        class="card-item"
+        v-for="post in postStore.Posts"
+        :key="post.id"
+        :img-url="post.blogCoverPhoto"
+        :title="post.blogTitle"
+        :desc="post.blogDesc"
+        :tags="post.tags"
+        :time='post.date.seconds'
       />
     </div>
   </div>
 </template>
 <style lang="less" scoped>
-.container {
+.container-main {
   width: 100vw;
   display: flex;
-}
-.card-cantainer {
-  width: calc(80vw + 96px);
-  margin: auto;
+  padding-top: 10vw;
+  padding-bottom: 10vw;
+  .card-cantainer {
+    width: calc(80vw + 96px);
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    .card-item {
+      margin-right: 24px;
+      margin-bottom: 40px;
+    }
+  }
 }
 </style>
