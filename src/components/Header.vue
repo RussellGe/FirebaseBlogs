@@ -5,7 +5,7 @@ const go = (name: string) => {
 };
 </script>
 <template>
-  <div class="header">
+  <div class="header" shadow>
     <div class="title">RussellGe</div>
     <div class="btn-container">
       <button class="btn-item icon-btn !outline-none" @click="toggleDark()">

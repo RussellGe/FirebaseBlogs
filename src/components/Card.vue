@@ -79,24 +79,24 @@ defineProps<{
   }
 }
 .small-card {
-  width: 14vw;
+  width: 18vw;
   border-radius: 10px;
   overflow: hidden;
-  height: 21vw;
+  height: 27vw;
   background: #fff;
   transition: all 0.5s ease;
   box-shadow: 0 8px 12px 0 rgba(31, 35, 41, 0.08);
   .topImg {
-    width: 14vw;
-    height: 10vw;
+    width: 18vw;
+    height: 13vw;
     object-fit: cover;
   }
   .bottom {
-    width: 14vw;
-    height: 11vw;
-    padding: 1vw;
+    width: 18vw;
+    height: 14vw;
+    padding: 2vw;
     .bottom-text {
-      height: 9vw;
+      height: 12vw;
       word-wrap: break-word;
       .bottom-title {
         font-size: 22px;

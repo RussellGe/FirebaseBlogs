@@ -1,10 +1,11 @@
 import { StoreEnum, PostsStore, Post } from '~/types/store';
 
 import { defineStore } from 'pinia';
-import { searchDb } from '~/db';
+import { searchDb, setNewData } from '~/db';
 
 const defaultState: PostsStore = {
   Posts: [],
+  currentImage: '',
 };
 
 export const usePostStore = defineStore(StoreEnum.Posts, {
@@ -18,8 +19,11 @@ export const usePostStore = defineStore(StoreEnum.Posts, {
         appData.id = doc.id;
         events.push(appData);
       });
-      console.log(events)
+      console.log(events);
       this.Posts = events;
+    },
+    async setPost(params: Post) {
+      setNewData('Posts', params);
     },
   },
 });

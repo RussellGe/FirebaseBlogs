@@ -15,4 +15,5 @@ export interface Post {
 
 export interface PostsStore {
   Posts: Post[];
+  currentImage: string;
 }
