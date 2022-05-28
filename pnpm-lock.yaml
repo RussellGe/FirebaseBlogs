@@ -8,6 +8,7 @@ specifiers:
   '@unocss/reset': ^0.34.1
   '@vitejs/plugin-vue': ^2.3.3
   '@vue/test-utils': ^2.0.0
+  '@vueuse/components': ^8.5.0
   '@vueuse/core': ^8.5.0
   '@wangeditor/editor-for-vue': ^5.1.11
   axios: ^0.27.2
@@ -32,6 +33,7 @@ specifiers:
   vue-tsc: ^0.34.16
 
 dependencies:
+  '@vueuse/components': 8.5.0_vue@3.2.36
   '@vueuse/core': 8.5.0_vue@3.2.36
   '@wangeditor/editor-for-vue': 5.1.11_vue@3.2.36
   axios: 0.27.2
@@ -1130,6 +1132,17 @@ packages:
     dependencies:
       vue: 3.2.36
     dev: true
+
+  /@vueuse/components/8.5.0_vue@3.2.36:
+    resolution: {integrity: sha512-JZ5D56YQMoGCvE5UJPKsWmPG3ywedqaKVgl+d+1HiCBR//2ufHpsp1SlLZmkkLAgX3qoL0GX2LXi7uyr2PLfSw==}
+    dependencies:
+      '@vueuse/core': 8.5.0_vue@3.2.36
+      '@vueuse/shared': 8.5.0_vue@3.2.36
+      vue-demi: 0.12.1_vue@3.2.36
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
 
   /@vueuse/core/8.5.0_vue@3.2.36:
     resolution: {integrity: sha512-VEJ6sGNsPlUp0o9BGda2YISvDZbhWJSOJu5zlp2TufRGVrLcYUKr31jyFEOj6RXzG3k/H4aCYeZyjpItfU8glw==}

@@ -1,7 +1,7 @@
 <template>
-  <main flex flex-col>
+  <main flex flex-col overflow-x-hidden>
     <Header />
-    <router-view bg="gray-200" />
+    <router-view />
     <Footer />
   </main>
 </template>

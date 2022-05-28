@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div>
+    <!-- <div>
       <button @click="insertText">insert text</button>
       <button @click="printHtml">print html</button>
       <button @click="disable">disable</button>
-    </div>
+    </div> -->
     <div style="border: 1px solid #ccc; margin-top: 10px">
       <Toolbar :editor="editorRef" :defaultConfig="toolbarConfig" :mode="mode" style="border-bottom: 1px solid #ccc" />
       <Editor
@@ -21,9 +21,9 @@
         @customPaste="customPaste"
       />
     </div>
-    <div style="margin-top: 10px">
+    <!-- <div style="margin-top: 10px">
       <textarea v-model="valueHtml" readonly style="width: 100%; height: 200px; outline: none"></textarea>
-    </div>
+    </div> -->
   </div>
 </template>
 
