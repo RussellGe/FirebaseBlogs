@@ -2,10 +2,14 @@
 import { searchDb } from '~/db';
 import { usePostStore } from '~/store/posts';
 import Card1 from '~/components/Card.vue';
+import { openMessage } from '~/components/message/message';
 const postStore = usePostStore();
 onMounted(() => {
   postStore.getPosts();
 });
+
+openMessage('hello', 'warning');
+
 const handleClick = (text: string) => {
   console.log(text);
 };
@@ -18,7 +22,6 @@ const changeCurrent = (current: number) => {
   <div class="container-main">
     <div class="card-cantainer">
       <Card1
-        ease-in-out
         class="card-item"
         v-for="post in postStore.showPosts"
         :key="post.id"

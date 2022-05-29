@@ -19,6 +19,7 @@ specifiers:
   less: ^4.1.2
   pinia: ^2.0.14
   pnpm: ^7.1.5
+  popup-manager: link:@mdvui/utils/popup-manager
   prettier: ^2.6.2
   typescript: ^4.7.2
   unocss: ^0.34.1
@@ -31,6 +32,7 @@ specifiers:
   vue: ^3.2.36
   vue-router: ^4.0.15
   vue-svg-loader: ^0.16.0
+  vue-template-compiler: ^2.0.0
   vue-tsc: ^0.34.16
 
 dependencies:
@@ -42,10 +44,12 @@ dependencies:
   firebase: 8.10.1
   less: 4.1.2
   pinia: 2.0.14_typescript@4.7.2+vue@3.2.36
+  popup-manager: link:@mdvui/utils/popup-manager
   unsplash-js: 7.0.15
   vue: 3.2.36
   vue-router: 4.0.15_vue@3.2.36
-  vue-svg-loader: 0.16.0
+  vue-svg-loader: 0.16.0_vue-template-compiler@2.6.14
+  vue-template-compiler: 2.6.14
 
 devDependencies:
   '@antfu/eslint-config': 0.24.1_eslint@8.16.0+typescript@4.7.2
@@ -1905,6 +1909,10 @@ packages:
       whatwg-url: 10.0.0
     dev: true
 
+  /de-indent/1.0.2:
+    resolution: {integrity: sha1-sgOOhG3DO6pXlhKNCAS0VbjB4h0=}
+    dev: false
+
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
     dependencies:
@@ -3111,6 +3119,11 @@ packages:
     engines: {node: '>= 0.4.0'}
     dependencies:
       function-bind: 1.1.1
+
+  /he/1.2.0:
+    resolution: {integrity: sha1-hK5l+n6vsWX922FWauFLrwVmTw8=}
+    hasBin: true
+    dev: false
 
   /hosted-git-info/2.8.9:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}
@@ -4727,12 +4740,13 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /svg-to-vue/0.7.0:
+  /svg-to-vue/0.7.0_vue-template-compiler@2.6.14:
     resolution: {integrity: sha1-7IbesXQr44MZRi42cDrx36L5+tk=}
     peerDependencies:
       vue-template-compiler: ^2.0.0
     dependencies:
       svgo: 1.3.2
+      vue-template-compiler: 2.6.14
     dev: false
 
   /svgo/1.3.2:
@@ -5220,13 +5234,21 @@ packages:
       vue: 3.2.36
     dev: false
 
-  /vue-svg-loader/0.16.0:
+  /vue-svg-loader/0.16.0_vue-template-compiler@2.6.14:
     resolution: {integrity: sha1-rcy9yaypATK96cnZbNSfdO/s00U=}
     peerDependencies:
       vue-template-compiler: ^2.0.0
     dependencies:
       loader-utils: 1.4.0
-      svg-to-vue: 0.7.0
+      svg-to-vue: 0.7.0_vue-template-compiler@2.6.14
+      vue-template-compiler: 2.6.14
+    dev: false
+
+  /vue-template-compiler/2.6.14:
+    resolution: {integrity: sha1-ovDn2YVnDULJye4NBE/tdpD092M=}
+    dependencies:
+      de-indent: 1.0.2
+      he: 1.2.0
     dev: false
 
   /vue-tsc/0.34.16_typescript@4.7.2:
