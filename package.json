@@ -12,6 +12,7 @@
   "dependencies": {
     "@vueuse/components": "^8.5.0",
     "@vueuse/core": "^8.5.0",
+    "@wangeditor/editor": "^5.1.0",
     "@wangeditor/editor-for-vue": "^5.1.11",
     "axios": "^0.27.2",
     "firebase": "^8.7.1",
