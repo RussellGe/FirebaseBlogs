@@ -6,18 +6,20 @@ import Test1 from '../components/Test.vue';
 import { usePostStore } from '~/store/posts';
 import type { StyleValue } from 'vue';
 import type { HeaderConfig } from './config';
-
+const router = useRouter()
 const PostStore = usePostStore();
 
 const images = ref<ImageOption[]>([]);
-
+const tags = ref<string[]>([]);
 const textarea = ref<HTMLDivElement>();
-
+const title = ref('');
+const desc = ref('');
+const blogHtml = ref('');
 const headerConfig = ref<HeaderConfig>({
   imgUrl: '',
   tags: [],
   imgTop: false,
-  showDesc: false
+  showDesc: false,
 });
 
 getImages().then((res) => {
@@ -32,7 +34,15 @@ const getStyle = computed((): StyleValue => {
     height: showHeight.value + 'px' || '88px',
   };
 });
-
+const changeHtml = (html: string) => {
+  blogHtml.value = html;
+};
+const changeTitle = (text: string) => {
+  title.value = text;
+};
+const changeDesc = (text: string) => {
+  desc.value = text;
+};
 const showScroll = () => {
   console.log(textarea.value?.scrollHeight);
   if (showHeight.value !== textarea.value?.scrollHeight) {
@@ -43,24 +53,53 @@ const handleSetCover = (url: string) => {
   headerConfig.value.imgUrl = url;
 };
 const changeTop = () => {
-  headerConfig.value.imgTop = !headerConfig.value.imgTop
-}
+  headerConfig.value.imgTop = !headerConfig.value.imgTop;
+};
 const clearImage = () => {
-  headerConfig.value.imgUrl = ''
-}
+  headerConfig.value.imgUrl = '';
+};
 const clearDesc = () => {
-  headerConfig.value.showDesc = false
-}
+  headerConfig.value.showDesc = false;
+};
 const showDesc = () => {
-  headerConfig.value.showDesc = true
-}
-const submit = () => {};
+  headerConfig.value.showDesc = true;
+};
+const changeTags = (tagList: string[]) => {
+  tags.value = tagList;
+};
+const submit = () => {
+  PostStore.setPost({
+    tags: tags.value,
+    blogTitle: title.value,
+    date: new Date().valueOf(),
+    blogDesc: desc.value,
+    blogCoverPhoto: headerConfig.value.imgUrl,
+    blogHtml: blogHtml.value,
+  }).then((res) => {
+    console.log(res)
+    router.push('/blog')
+  })
+};
 </script>
 
 <template>
   <div px-80>
-    <HeaderTool @show-desc="showDesc" @set-cover="handleSetCover" :headerConfig="headerConfig" :images="images" />
-    <HeaderContent @clear-desc="clearDesc" @change-top="changeTop" @clear-image="clearImage" :headerConfig="headerConfig" />
-    <BaseEditor mb-20/>
+    <HeaderTool
+      @change-tags="changeTags"
+      @show-desc="showDesc"
+      @set-cover="handleSetCover"
+      @publish="submit"
+      :headerConfig="headerConfig"
+      :images="images"
+    />
+    <HeaderContent
+      @clear-desc="clearDesc"
+      @change-top="changeTop"
+      @clear-image="clearImage"
+      @change-title="changeTitle"
+      @change-desc="changeDesc"
+      :headerConfig="headerConfig"
+    />
+    <BaseEditor @change-html="changeHtml" mb-20 />
   </div>
 </template>

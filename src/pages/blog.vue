@@ -22,7 +22,7 @@ const handleClick = (text: string) => {
         :title="post.blogTitle"
         :desc="post.blogDesc"
         :tags="post.tags"
-        :time='post.date.seconds'
+        :time='post.date'
       />
       <Card1
         class="card-item"
@@ -32,7 +32,7 @@ const handleClick = (text: string) => {
         :title="post.blogTitle"
         :desc="post.blogDesc"
         :tags="post.tags"
-        :time='post.date.seconds'
+        :time='post.date'
       />
       <Card1
         class="card-item"
@@ -42,7 +42,7 @@ const handleClick = (text: string) => {
         :title="post.blogTitle"
         :desc="post.blogDesc"
         :tags="post.tags"
-        :time='post.date.seconds'
+        :time='post.date'
       />
       <Card1
         class="card-item"
@@ -52,7 +52,7 @@ const handleClick = (text: string) => {
         :title="post.blogTitle"
         :desc="post.blogDesc"
         :tags="post.tags"
-        :time='post.date.seconds'
+        :time='post.date'
       />
       <Card1
         class="card-item"
@@ -62,7 +62,7 @@ const handleClick = (text: string) => {
         :title="post.blogTitle"
         :desc="post.blogDesc"
         :tags="post.tags"
-        :time='post.date.seconds'
+        :time='post.date'
       />
     </div>
   </div>

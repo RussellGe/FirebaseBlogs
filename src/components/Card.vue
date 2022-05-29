@@ -26,7 +26,7 @@ defineProps<{
         <div c-gray-700 class="bottom-title">{{ title }}</div>
         <div c-gray-500 class="bottom-time">Posted on: {{ getTime(time) }}</div>
         <div class="bottom-tags">
-          <div v-if='!preview' bg-bluegray rounded mr-2 class="bottom-tag" v-for="item in tags" :key="item">{{ item }}</div>
+          <div v-if='!preview' bg-bluegray rounded mr-2 c-white class="bottom-tag" v-for="item in tags" :key="item">{{ item }}</div>
         </div>
       </div>
       <div v-if='!preview' c-gray-700 class="bottom-btn">

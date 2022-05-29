@@ -2,17 +2,31 @@
 const showMene = ref(false);
 const showPopover = () => {
   showMene.value = !showMene.value;
+  nextTick(() => {
+    leftWidth.value =
+      ((content.value?.getBoundingClientRect().width || 0) - (menu.value?.getBoundingClientRect().width || 0)) / 2;
+  });
 };
-const content = ref<HTMLDivElement>()
-const menu = ref<HTMLDivElement>()
+const leftWidth = ref(0);
+const content = ref<HTMLDivElement>();
+const menu = ref<HTMLDivElement>();
 </script>
 <template>
   <div class="popover">
-    <div ref="menu" v-if="showMene" :style="{top: `-${menu?.getBoundingClientRect().height}px`}" class="menu">
-      <slot name="popover-menu">123</slot>
-    </div>
     <div ref="content" @click="showPopover">
       <slot></slot>
+    </div>
+    <div
+      ref="menu"
+      v-show="showMene"
+      z-10
+      :style="{
+        top: `${content?.getBoundingClientRect().height ? content?.getBoundingClientRect().height + 5 : 0}px`,
+        left: `${leftWidth}px`,
+      }"
+      class="menu"
+    >
+      <slot name="popover-menu"></slot>
     </div>
   </div>
 </template>

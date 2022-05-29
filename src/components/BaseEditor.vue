@@ -6,10 +6,10 @@
       <button @click="disable">disable</button>
     </div> -->
     <div style="border: 1px solid #ccc; margin-top: 10px">
-      <Toolbar :editor="editorRef" :defaultConfig="toolbarConfig" :mode="mode" style="border-bottom: 1px solid #ccc" />
+      <Toolbar :editor="editorRef" :defaultConfig="toolbarConfig" :mode="'simple'" style="border-bottom: 1px solid #ccc" />
       <Editor
         :defaultConfig="editorConfig"
-        :mode="mode"
+        :mode="'simple'"
         v-model="valueHtml"
         style="height: 400px; overflow-y: hidden"
         @onCreated="handleCreated"
@@ -34,16 +34,9 @@ import { Editor, Toolbar } from '@wangeditor/editor-for-vue';
 
 // 编辑器实例，必须用 shallowRef，重要！
 const editorRef = shallowRef();
-
+const emit = defineEmits(['changeHtml'])
 // 内容 HTML
-const valueHtml = ref('<p>hello</p>');
-
-// 模拟 ajax 异步获取内容
-onMounted(() => {
-  setTimeout(() => {
-    valueHtml.value = '<p>模拟 Ajax 异步设置内容</p>';
-  }, 1500);
-});
+const valueHtml = ref('');
 
 const toolbarConfig = {};
 const editorConfig = { placeholder: '请输入内容...' };
@@ -63,6 +56,7 @@ const handleCreated = (editor) => {
 };
 const handleChange = (editor) => {
   console.log('change:', editor.getHtml());
+  emit('changeHtml', editor.getHtml())
 };
 const handleDestroyed = (editor) => {
   console.log('destroyed', editor);

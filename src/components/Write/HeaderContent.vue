@@ -2,7 +2,7 @@
 import type { HeaderConfig } from '~/pages/config';
 const title = ref<string>('');
 const desc = ref<string>('');
-const emit = defineEmits(['changeTop', 'clearImage', 'clearDesc'])
+const emit = defineEmits(['changeTop', 'clearImage', 'clearDesc', 'changeTitle', 'changeDesc'])
 defineProps<{
   headerConfig: HeaderConfig;
 }>();
@@ -10,7 +10,14 @@ watchEffect(() => {
   if (title.value.length > 150) {
     title.value = title.value.slice(0, 150);
   }
+  emit('changeTitle', title.value)
 });
+watchEffect(() => {
+    if (desc.value.length > 300) {
+    desc.value = desc.value.slice(0, 300);
+  }
+  emit('changeDesc', desc.value)
+})
 const changeTop = () => {
     emit('changeTop')
 }
@@ -73,7 +80,7 @@ const clearDesc = () => {
     />
   </div>
   <div v-if='headerConfig.showDesc' relative px-10 py-2 text-xl font-semibold>
-      <div @click="clearDesc" flex justify-center items-center w-12 h-8 hover:bg-gray-500:80 rounded-xl absolute top-2 z-10 right--5 hover:c-white>
+      <div @click="clearDesc" flex justify-center items-center w-12 h-8 hover:bg-gray-500:80 rounded-xl absolute top-2 right--5 hover:c-white>
           <div font-semibold text-xl i-carbon-close></div>
       </div>
     <pre invisible block min-h-22 overflow-hidden b-0 whitespace-pre-wrap break-words>{{ desc }}</pre>

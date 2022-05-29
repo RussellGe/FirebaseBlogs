@@ -18,7 +18,7 @@ declare module '@vue/runtime-core' {
     Popover: typeof import('./src/components/Popover.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    TagSelects: typeof import('./src/components/TagSelects.vue')['default']
+    TagSelects: typeof import('./src/components/Write/TagSelects.vue')['default']
     Test: typeof import('./src/components/Test.vue')['default']
   }
 }
