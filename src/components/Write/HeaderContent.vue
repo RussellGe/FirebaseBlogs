@@ -80,7 +80,7 @@ const clearDesc = () => {
     />
   </div>
   <div v-if='headerConfig.showDesc' relative px-10 py-2 text-xl font-semibold>
-      <div @click="clearDesc" flex justify-center items-center w-12 h-8 hover:bg-gray-500:80 rounded-xl absolute top-2 right--5 hover:c-white>
+      <div z-10 @click="clearDesc" flex justify-center items-center w-12 h-8 hover:bg-gray-500:80 rounded-xl absolute top-2 right--5 hover:c-white>
           <div font-semibold text-xl i-carbon-close></div>
       </div>
     <pre invisible block min-h-22 overflow-hidden b-0 whitespace-pre-wrap break-words>{{ desc }}</pre>
