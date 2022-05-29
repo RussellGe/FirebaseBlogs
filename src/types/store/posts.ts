@@ -1,3 +1,4 @@
+import type { PagerConfig } from '~/pages/config';
 export interface Post {
   id?: string;
   blogHtml: string;
@@ -11,4 +12,5 @@ export interface Post {
 export interface PostsStore {
   Posts: Post[];
   currentImage: string;
+  PagerConfig: PagerConfig;
 }

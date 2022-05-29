@@ -4,3 +4,9 @@ export interface HeaderConfig {
   imgTop: boolean;
   showDesc: boolean
 }
+
+export interface PagerConfig {
+  total: number;
+  pageSize: number;
+  current: number;
+}

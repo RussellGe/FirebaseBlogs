@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-export interface PagerConfig {
-  total: number;
-  pageSize: number;
-  current: number;
-}
+import type { PagerConfig } from '~/pages/config';
 
 const props = defineProps<{
   config: PagerConfig;
@@ -25,9 +21,10 @@ const handleChange = (item: number | string, index: number): void => {
 };
 const showTotal = computed(() => {
   const pages = Math.ceil(props.config.total / props.config.pageSize);
+  console.log(pages)
   const res = [];
   if (pages <= 9) {
-    for (let i = 1; i < pages; i++) {
+    for (let i = 1; i <= pages; i++) {
       res.push(i);
     }
     return res;
@@ -68,7 +65,7 @@ const handleRight = () => {
 </script>
 <template>
   <div class="pager">
-    <div class="left" @click="handleLeft"><IconFont type="iconglobal_03_action_xiangzuo_line" /></div>
+    <div class="left" @click="handleLeft"><div c-gray-400 i-carbon-arrow-left></div></div>
     <span
       v-for="(item, index) in showTotal"
       :key="item"
@@ -77,7 +74,7 @@ const handleRight = () => {
       @click="handleChange(item, index)"
       >{{ item }}</span
     >
-    <div class="right" @click="handleRight"><IconFont type="iconglobal_03_action_xiangzuo_line" /></div>
+    <div class="right" @click="handleRight"><div c-gray-400 i-carbon-arrow-right></div></div>
   </div>
 </template>
 <style scoped lang="less">
@@ -86,14 +83,11 @@ const handleRight = () => {
   align-items: center;
   .left {
     font-size: 16px;
-    color: #0c62fa;
     margin-right: 44px;
     cursor: pointer;
   }
   .right {
     font-size: 16px;
-    transform: rotate(180deg);
-    color: #0c62fa;
     margin-left: 44px;
     cursor: pointer;
   }

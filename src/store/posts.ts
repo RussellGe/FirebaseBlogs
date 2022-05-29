@@ -6,6 +6,11 @@ import { searchDb, setNewData } from '~/db';
 const defaultState: PostsStore = {
   Posts: [],
   currentImage: '',
+  PagerConfig: {
+    current: 1,
+    total: 0,
+    pageSize: 4,
+  },
 };
 
 export const usePostStore = defineStore(StoreEnum.Posts, {
@@ -21,9 +26,18 @@ export const usePostStore = defineStore(StoreEnum.Posts, {
       });
       console.log(events);
       this.Posts = events;
+      this.PagerConfig.total = this.Posts.length;
     },
     async setPost(params: Post) {
       setNewData('Posts', params);
+    },
+  },
+  getters: {
+    showPosts(): Post[] {
+      return this.Posts.slice(
+        (this.PagerConfig.current - 1) * this.PagerConfig.pageSize,
+        this.PagerConfig.current * this.PagerConfig.pageSize,
+      );
     },
   },
 });
