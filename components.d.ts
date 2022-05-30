@@ -11,6 +11,7 @@ declare module '@vue/runtime-core' {
     HeaderContent: typeof import('./src/components/Write/HeaderContent.vue')['default']
     HeaderTool: typeof import('./src/components/Write/HeaderTool.vue')['default']
     ImageSelects: typeof import('./src/components/Write/ImageSelects.vue')['default']
+    Loading: typeof import('./src/components/Loading.vue')['default']
     Main: typeof import('./src/components/message/main.vue')['default']
     Modal: typeof import('./src/components/Modal.vue')['default']
     Pager: typeof import('./src/components/Pager.vue')['default']

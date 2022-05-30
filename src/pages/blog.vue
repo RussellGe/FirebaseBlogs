@@ -4,11 +4,14 @@ import { usePostStore } from '~/store/posts';
 import Card1 from '~/components/Card.vue';
 import { openMessage } from '~/components/message/message';
 const postStore = usePostStore();
+const loading = ref(false);
 onMounted(() => {
-  postStore.getPosts();
+  loading.value = true;
+  postStore.getPosts().finally(() => {
+    loading.value = false;
+  });
 });
 
-openMessage('hello', 'warning');
 
 const handleClick = (text: string) => {
   console.log(text);
@@ -20,7 +23,8 @@ const changeCurrent = (current: number) => {
 
 <template>
   <div class="container-main">
-    <div class="card-cantainer">
+    <Loading :show="loading" type="spiningDubbles" />
+    <div v-if='!loading' class="card-cantainer">
       <Card1
         class="card-item"
         v-for="post in postStore.showPosts"
@@ -32,7 +36,7 @@ const changeCurrent = (current: number) => {
         :time="post.date"
       />
     </div>
-    <Pager @change-current="changeCurrent" :config="postStore.PagerConfig" />
+    <Pager v-if='!loading' @change-current="changeCurrent" :config="postStore.PagerConfig" />
   </div>
 </template>
 <style lang="less" scoped>

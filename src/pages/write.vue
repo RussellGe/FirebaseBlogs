@@ -6,7 +6,8 @@ import Test1 from '../components/Test.vue';
 import { usePostStore } from '~/store/posts';
 import type { StyleValue } from 'vue';
 import type { HeaderConfig } from './config';
-const router = useRouter()
+import { openMessage } from '~/components/message/message';
+const router = useRouter();
 const PostStore = usePostStore();
 
 const images = ref<ImageOption[]>([]);
@@ -68,17 +69,29 @@ const changeTags = (tagList: string[]) => {
   tags.value = tagList;
 };
 const submit = () => {
+  if (!title.value) {
+    openMessage('请输入标题', 'error');
+    return;
+  }
+  if (!blogHtml.value) {
+    openMessage('文章内容不可为空', 'error');
+    return;
+  }
   PostStore.setPost({
     tags: tags.value,
     blogTitle: title.value,
     date: new Date().valueOf(),
     blogDesc: desc.value,
-    blogCoverPhoto: headerConfig.value.imgUrl,
+    blogCoverPhoto: headerConfig.value.imgUrl || images.value[0].download_url,
     blogHtml: blogHtml.value,
-  }).then((res) => {
-    console.log(res)
-    router.push('/blog')
   })
+    .then((res) => {
+      openMessage('文章发布成功', 'success');
+      router.push('/blog');
+    })
+    .catch((err) => {
+      openMessage(`文章发布失败，错误信息：${err}`, 'error');
+    });
 };
 </script>
 
